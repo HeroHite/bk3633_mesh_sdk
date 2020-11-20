@@ -58,8 +58,8 @@ static const struct bt_mesh_le_adv_param slow_adv_param = {
 
 static const struct bt_mesh_le_adv_param fast_adv_param = {
     .options = (BT_MESH_LE_ADV_OPT_CONNECTABLE | BT_MESH_LE_ADV_OPT_ONE_TIME),
-    .interval_min = BT_MESH_GAP_ADV_FAST_INT_MIN_2,
-    .interval_max = BT_MESH_GAP_ADV_FAST_INT_MAX_2,
+    .interval_min = BT_MESH_GAP_ADV_FAST_INT_MIN_1,
+    .interval_max = BT_MESH_GAP_ADV_FAST_INT_MIN_1,
 };
 
 static bool proxy_adv_enabled;
@@ -1141,7 +1141,7 @@ static s32_t gatt_proxy_advertise(struct bt_mesh_subnet *sub)
 
     if (conn_count == CONFIG_BT_MAX_CONN) {
         BT_WARN("Connectable advertising deferred (max connections)");
-        return remaining;
+        return K_SECONDS(1);
     }
 
     if (!sub) {

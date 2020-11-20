@@ -1375,8 +1375,6 @@ void bt_mesh_net_recv(struct net_buf_simple *data, s8_t rssi,
     rx.local_match = (bt_mesh_fixed_group_match(rx.dst) ||
               bt_mesh_elem_find(rx.dst));
 
-    bt_mesh_trans_recv(buf, &rx);
-
     /* Relay if this was a group/virtual address, or if the destination
      * was neither a local element nor an LPN we're Friends for.
      */
@@ -1385,6 +1383,8 @@ void bt_mesh_net_recv(struct net_buf_simple *data, s8_t rssi,
         net_buf_simple_restore(buf, &state);
         bt_mesh_net_relay(buf, &rx);
     }
+
+    bt_mesh_trans_recv(buf, &rx);
 }
 
 static void ivu_complete(struct k_work *work)
