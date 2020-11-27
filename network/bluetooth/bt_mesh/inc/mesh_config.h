@@ -66,7 +66,7 @@
 #endif
 
 #ifndef CONFIG_BT_MESH_ADV_PRIO
-#define CONFIG_BT_MESH_ADV_PRIO 16  //32
+#define CONFIG_BT_MESH_ADV_PRIO 25      //16  //32
 #endif
 
 #ifndef CONFIG_BT_MESH_PROXY_FILTER_SIZE
@@ -74,7 +74,7 @@
 #endif
 
 #ifndef CONFIG_BT_MESH_NODE_ID_TIMEOUT
-#define CONFIG_BT_MESH_NODE_ID_TIMEOUT 60
+#define CONFIG_BT_MESH_NODE_ID_TIMEOUT 15       //60
 #endif
 
 #ifdef CONFIG_BT_MESH_FRIEND

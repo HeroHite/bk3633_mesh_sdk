@@ -534,7 +534,7 @@ enum {
 };
 
 /* Defined GAP timers */
-#define BT_MESH_GAP_ADV_FAST_INT_MIN_1               0x0030  /* 30 ms    */
+#define BT_MESH_GAP_ADV_FAST_INT_MIN_1               0x0020  /* 20 ms    */
 #define BT_MESH_GAP_ADV_FAST_INT_MAX_1               0x0060  /* 60 ms    */
 #define BT_MESH_GAP_ADV_FAST_INT_MIN_2               0x00a0  /* 100 ms   */
 #define BT_MESH_GAP_ADV_FAST_INT_MAX_2               0x00f0  /* 150 ms   */

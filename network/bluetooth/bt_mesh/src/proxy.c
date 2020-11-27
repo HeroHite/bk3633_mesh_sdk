@@ -1077,7 +1077,7 @@ static int net_id_adv(struct bt_mesh_subnet *sub)
             }
         }
 #else
-    err = bt_mesh_adv_start(&slow_adv_param, net_id_ad,
+    err = bt_mesh_adv_start(&fast_adv_param, net_id_ad,
                              ARRAY_SIZE(net_id_ad), NULL, 0);
 #endif
     if (err) {
@@ -1141,7 +1141,11 @@ static s32_t gatt_proxy_advertise(struct bt_mesh_subnet *sub)
 
     if (conn_count == CONFIG_BT_MAX_CONN) {
         BT_WARN("Connectable advertising deferred (max connections)");
-        return K_SECONDS(1);
+        if (sub->node_id == BT_MESH_NODE_IDENTITY_RUNNING) {
+            return K_MSEC(500);    //node_id adv wait for 500ms.
+        } else {
+            return remaining;
+        }
     }
 
     if (!sub) {
@@ -1191,7 +1195,11 @@ static s32_t gatt_proxy_advertise(struct bt_mesh_subnet *sub)
 
     BT_DBG("Advertising %d ms for net_idx 0x%04x", remaining, sub->net_idx);
 
-    return remaining;
+    if (sub->node_id == BT_MESH_NODE_IDENTITY_RUNNING) {
+        return K_MSEC(200);     //node_id adv wait for 200ms.
+    } else {
+        return remaining;
+    }
 }
 #endif /* GATT_PROXY */
 

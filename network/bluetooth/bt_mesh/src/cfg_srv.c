@@ -540,10 +540,12 @@ static void app_key_add(struct bt_mesh_model *model,
         BT_ERR("Unable to send App Key Status response");
     }
 
+#ifdef CONFIG_BT_MESH_ALI_TMALL_GENIE
     genie_sub_list_init();
     genie_mesh_setup();
 
     genie_event(GENIE_EVT_SDK_APPKEY_ADD, &status);
+#endif  /* CONFIG_BT_MESH_ALI_TMALL_GENIE */
 }
 
 void genie_appkey_register(u16_t net_idx, u16_t app_idx, const u8_t val[16], bool update)
@@ -578,7 +580,9 @@ static void app_key_update(struct bt_mesh_model *model,
         BT_ERR("Unable to send App Key Status response");
     }
 
+#ifdef CONFIG_BT_MESH_ALI_TMALL_GENIE
     genie_event(GENIE_EVT_SDK_APPKEY_UPDATE, &status);
+#endif  /* CONFIG_BT_MESH_ALI_TMALL_GENIE */
 }
 
 static void _mod_unbind(struct bt_mesh_model *mod, struct bt_mesh_elem *elem,
