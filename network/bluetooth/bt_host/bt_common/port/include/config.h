@@ -496,7 +496,7 @@
 #endif
 
 #ifndef CONFIG_BT_MESH_NODE_ID_TIMEOUT
-#define CONFIG_BT_MESH_NODE_ID_TIMEOUT 15       //60
+#define CONFIG_BT_MESH_NODE_ID_TIMEOUT 10       //60
 #endif
 
 #endif /* endof CONFIG_BT_MESH */
