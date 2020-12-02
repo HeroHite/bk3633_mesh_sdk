@@ -173,6 +173,14 @@ struct bt_mesh_uuid_128 {
 #define BT_MESH_UUID_MESH_PROXY_DATA_OUT       BT_MESH_UUID_DECLARE_16(0x2ade)
 #define BT_MESH_UUID_MESH_PROXY_DATA_OUT_VAL   0x2ade
 
+#ifdef CONFIG_BT_MESH_TELINK
+/** @def BT_MESH_UUID_MESH_TELINK
+ *  @brief Supported Telink ble mesh
+ */
+#define BT_MESH_UUID_MESH_TELINK               BT_MESH_UUID_DECLARE_16(0x7fdd)
+#define BT_MESH_UUID_MESH_TELINK_VAL           0x7fdd
+#endif /* CONFIG_BT_MESH_TELINK */
+
 /** @brief GATT Attribute structure. */
 struct bt_mesh_gatt_attr {
 	/** Attribute UUID */
